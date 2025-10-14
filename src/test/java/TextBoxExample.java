@@ -3,6 +3,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -11,7 +12,12 @@ public class TextBoxExample {
     WebDriver driver;
     @BeforeMethod
     public void openLinkTestPage() {
-        driver = new ChromeDriver();
+
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setBrowserVersion("135");
+
+
+        driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
         driver.get("https://www.leafground.com/input.xhtml");
         try {
@@ -30,7 +36,7 @@ public class TextBoxExample {
 
         //02 Append Country to this City.
         WebElement appendText = driver.findElement(By.id("j_idt88:j_idt91"));
-        appendText.sendKeys("India");
+        appendText.sendKeys(" : India");
 
         //03 Verify if text box is disabled
         boolean enabled = driver.findElement(By.name("j_idt88:j_idt93")).isEnabled();
