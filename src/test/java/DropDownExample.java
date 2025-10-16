@@ -31,25 +31,12 @@ public class DropDownExample {
     select.selectByIndex(1);
     Thread.sleep(2000);
     select.selectByValue("Playwright");
-
-
-
-
-
-
-
-
+    Thread.sleep(2000);
+    select.selectByVisibleText("Selenium");
+    Thread.sleep(2000);
 
         // 1.2 Select the value "Selenium" from the drop down
         // 1.3 Confirm the selected value is displayed
-
-
-
-
-
-
-
-
 
 
     }
