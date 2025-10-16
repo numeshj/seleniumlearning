@@ -57,18 +57,12 @@ public class ButtonExample {
         System.out.println("The height of this button is : " + height);
         System.out.println("The width of this button is : " + width);
 
-
-
-
-
-
-
         // 03 Click and Confirm title (Image)
         // 04 How many rounded buttons are there?
         // 05 What is the position of the Submit button?
         // 06 What is the background color of the Save button?
         // 07 What is the font size of the Save button?
-        // 08 Mouse over on the Image Button and confirm the message.
+        // 08 Mouse over on the Image Button and confirm the message
         // 09 Click Me - Button without a name
     }
 
