@@ -4,8 +4,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class DropDownExample {
 
@@ -14,7 +17,6 @@ public class DropDownExample {
     public void openLinkTestPage() {
 
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setBrowserVersion("135");
 
 
         driver = new ChromeDriver(chromeOptions);
@@ -30,14 +32,46 @@ public class DropDownExample {
     Select select = new Select(dropdown);
     select.selectByIndex(1);
     Thread.sleep(2000);
-    select.selectByValue("Playwright");
+    select.selectByVisibleText("Playwright");
     Thread.sleep(2000);
     select.selectByVisibleText("Selenium");
     Thread.sleep(2000);
+    select.selectByVisibleText("Puppeteer");
+    Thread.sleep(2000);
+    select.selectByVisibleText("Cypress");
+    Thread.sleep(2000);
 
-        // 1.2 Select the value "Selenium" from the drop down
-        // 1.3 Confirm the selected value is displayed
+        // 1.2 Get the number of options in the drop down
+        //generics
+        List<WebElement> listOfOptions =  select.getOptions();
+        int size = listOfOptions.size();
+        System.out.println("Number of elements in the drop down : " + size);
 
+        for (WebElement element:listOfOptions) {
+            System.out.println(element.getText());
+        }
 
+        // 1.3 Select the dropdown using send keys
+        dropdown.sendKeys("Puppeteer");
+        Thread.sleep(2000);
+
+        //1.4 Selecting values in a boostrap dropdown
+        WebElement dropdown2 =  driver.findElement(By.xpath("//div[@id='j_idt87:country']"));
+        dropdown2.click();
+        List<WebElement> listOfDropDownValues = driver.findElements(By.xpath("//ul[@id='j_idt87:country_items']/li"));
+        for (WebElement element : listOfDropDownValues) {
+            String dropDownValue = element.getText();
+            if (dropDownValue.equals("USA")) {
+                element.click();
+                break;
+            }
+        }
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
