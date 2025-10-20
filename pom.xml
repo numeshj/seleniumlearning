@@ -48,6 +48,12 @@
             <version>4.31.0</version> <!-- Replace with latest -->
         </dependency>
 
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-devtools-v141</artifactId>
+            <version>4.31.0</version>
+        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
