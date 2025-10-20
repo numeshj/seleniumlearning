@@ -21,13 +21,14 @@ public class DropDownExample {
 
         driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
-        driver.get("https://www.leafground.com/select.xhtml");
+
     }
 
     @Test
     public void leafGroundDropDown() throws InterruptedException {
 
         // 1.1 Base of select values of drop down
+        driver.get("https://www.leafground.com/select.xhtml");
     WebElement dropdown = driver.findElement((By.xpath("//select[@class='ui-selectonemenu']")));
     Select select = new Select(dropdown);
     select.selectByIndex(1);
@@ -67,6 +68,16 @@ public class DropDownExample {
             }
         }
     }
+
+    @Test
+    public void googleSearchDropDown() {
+        driver.get("https://www.google.com/");
+        driver.findElements(By.name("q")).get(0).sendKeys("palitha");
+        Thread.sleep(2000);
+        driver.findElements(By.xpath("))
+    }
+
+
 
     @AfterMethod
     public void tearDown() {
