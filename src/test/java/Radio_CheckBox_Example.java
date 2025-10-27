@@ -10,7 +10,6 @@ import java.util.List;
 
 public class Radio_CheckBox_Example {
 
-    private static final long DEFAULT_SLEEP_MS = 2000L;
     WebDriver driver;
 
     @BeforeMethod
@@ -66,11 +65,34 @@ public class Radio_CheckBox_Example {
         }
 
         // 2) select the age group (only if not selected)
-        WebElement myAgeGroup = driver.findElement(By.id("j_idt87:age:1"));
-        boolean isChecked = myAgeGroup.isSelected();
-        if (!isChecked) {
-//            myAgeGroup.click();
-            driver.findElement(By.xpath("//label[@for='j_idt87:age:1']")).click();
+//        WebElement myAgeGroup = driver.findElement(By.id("j_idt87:age:1"));
+//        boolean isChecked = myAgeGroup.isSelected();
+//        if (!isChecked) {
+////            myAgeGroup.click();
+//            driver.findElement(By.xpath("//label[@for='j_idt87:age:1']")).click();
+//        }
+
+        String myAgeGroup = "21-40 Years";
+
+        List<WebElement> ageGroups = driver.findElements(By.xpath("//div[@id='j_idt87:age']//label"));
+
+        if (ageGroups.isEmpty()) {
+            System.out.println("No age group elements found for xpath, page structure may have changed.");
+            return;
         }
+
+        for (WebElement element : ageGroups) {
+            String ageGroupText = element.getText();
+            if (ageGroupText.equals(myAgeGroup)) {
+               WebElement myAgeRadio = driver.findElement(By.xpath("//label[text()='" + myAgeGroup + "']/parent::div//input"));
+               if (!myAgeRadio.isSelected()) {
+                   element.click();
+               }
+                break;
+            }
+        }
+
+
+
     }
 }
