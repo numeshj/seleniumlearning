@@ -47,7 +47,6 @@ public class AlertExample {
         String alertText = alert2.getText();
         System.out.println("Alert text is : " + alertText);
         alert2.sendKeys("Numesh Jayamanne");
-        Thread.sleep(2000);
         alert2.accept();
 
 
